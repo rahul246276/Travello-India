@@ -5,6 +5,25 @@
     box-sizing: border-box;
 }
 
+/* Mobile Touch Fixes - Ensure all buttons are clickable */
+button,
+a.btn,
+input[type="submit"],
+input[type="button"],
+.nav-toggle,
+.hero-prev,
+.hero-next,
+.testimonial-prev,
+.testimonial-next,
+.dot,
+.testimonial-dot {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
 :root {
     /* Logo-inspired Blue Color Palette */
     --primary-color: #1E90FF;        /* Dodger Blue - Main brand color */
@@ -118,6 +137,12 @@ p {
     transition: all 0.3s ease;
     backdrop-filter: blur(20px);
     border-bottom: 2px solid rgba(30, 144, 255, 0.08);
+    isolation: isolate;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 4px 35px rgba(30, 144, 255, 0.2);
+    padding: 0.8rem 0;
 }
 
 .nav-wrapper {
@@ -125,6 +150,9 @@ p {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    min-height: 65px;
+    z-index: 1000;
+    isolation: isolate;
 }
 
 .logo {
@@ -229,11 +257,34 @@ p {
     flex-direction: column;
     cursor: pointer;
     gap: 6px;
-    padding: 8px;
-    z-index: 1001;
+    padding: 12px;
+    z-index: 1003 !important;
     position: relative;
     background: transparent;
     border: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    min-width: 50px;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    pointer-events: auto !important;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    outline: none;
+}
+
+.nav-toggle:active,
+.nav-toggle:focus {
+    background: rgba(30, 144, 255, 0.1);
+    transform: scale(0.95);
+    outline: 2px solid rgba(30, 144, 255, 0.3);
+    outline-offset: 2px;
 }
 
 .nav-toggle span {
@@ -243,6 +294,9 @@ p {
     transition: all 0.3s ease;
     border-radius: 3px;
     display: block;
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
 }
 
 .nav-toggle.active span:nth-child(1) {
@@ -338,6 +392,12 @@ p {
     font-size: 1.5rem;
     transition: all 0.3s;
     backdrop-filter: blur(10px);
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    position: relative;
 }
 
 .hero-prev:hover,
@@ -363,12 +423,30 @@ p {
     background: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    position: relative;
+    z-index: 10;
 }
 
 .dot.active {
     background: var(--white);
     width: 30px;
     border-radius: 6px;
+}
+
+/* Buttons - Global Mobile Fix */
+button,
+a.btn,
+input[type="submit"],
+input[type="button"] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
 }
 
 /* Buttons */
@@ -389,6 +467,11 @@ p {
     font-family: 'Segoe UI', 'Arial', sans-serif;
     position: relative;
     overflow: hidden;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .btn-primary {
@@ -409,6 +492,8 @@ p {
     background: rgba(255, 255, 255, 0.3);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .btn-primary:hover::before {
@@ -458,6 +543,7 @@ p {
     background: var(--gradient-1);
     transition: left 0.3s;
     z-index: -1;
+    pointer-events: none;
 }
 
 .btn-outline:hover::before {
@@ -854,6 +940,12 @@ p {
     justify-content: center;
     transition: all 0.3s;
     box-shadow: var(--shadow);
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    position: relative;
 }
 
 .testimonial-prev:hover,
@@ -1174,9 +1266,22 @@ p {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 2rem;
-    margin-top: 2rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+    padding-top: 2.5rem;
+    margin-top: 3rem;
+    position: relative;
+}
+
+.footer-bottom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: var(--primary-color);
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
 }
 
 .footer-bottom-content {
@@ -1189,12 +1294,29 @@ p {
 
 /* Footer Improvements */
 .footer-top {
-    background: rgba(255, 255, 255, 0.08);
-    padding: 3rem 2rem;
-    margin-bottom: 3rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3.5rem 2.5rem;
+    margin-bottom: 3.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.footer-top:hover::before {
+    left: 100%;
 }
 
 .footer-newsletter {
@@ -1251,6 +1373,13 @@ p {
     padding: 14px 30px;
     border-radius: 50px;
     white-space: nowrap;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    position: relative;
+    cursor: pointer;
 }
 
 .footer-payment {
@@ -1758,6 +1887,13 @@ p {
     gap: 0.75rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    position: relative;
 }
 
 .btn-submit:hover {
@@ -1863,6 +1999,13 @@ p {
 /* Responsive Design */
 .newsletter-form button {
     white-space: nowrap;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    position: relative;
 }
 
 @media (max-width: 768px) {
@@ -1880,13 +2023,17 @@ p {
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
         padding: 5rem 2rem 2rem;
         gap: 0;
-        z-index: 999;
+        z-index: 1000 !important;
         overflow-y: auto;
+        pointer-events: auto !important;
     }
 
     .nav-menu li {
         width: 100%;
         border-bottom: 1px solid rgba(30, 144, 255, 0.1);
+        pointer-events: auto !important;
+        position: relative;
+        z-index: 1;
     }
 
     .nav-menu li:last-child {
@@ -1894,11 +2041,22 @@ p {
     }
 
     .nav-menu a {
-        padding: 1rem 0;
+        padding: 1.25rem 1rem;
         font-size: 1.1rem;
         width: 100%;
-        display: block;
+        display: flex !important;
+        align-items: center;
         color: var(--text-color);
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: rgba(30, 144, 255, 0.2) !important;
+        user-select: none;
+        -webkit-user-select: none;
+        position: relative;
+        z-index: 2;
+        min-height: 48px;
+        transition: all 0.3s ease;
     }
 
     .nav-menu a::before {
@@ -1906,23 +2064,70 @@ p {
     }
 
     .nav-menu a:hover,
-    .nav-menu a.active {
+    .nav-menu a.active,
+    .nav-menu a:active,
+    .nav-menu a:focus {
         color: var(--primary-color);
-        padding-left: 1rem;
+        padding-left: 1.5rem;
         transform: none;
+        background: rgba(30, 144, 255, 0.05);
+        border-left: 3px solid var(--primary-color);
+    }
+
+    /* Active touch feedback */
+    .nav-menu a:active {
+        background: rgba(30, 144, 255, 0.1);
+        transform: scale(0.98);
     }
 
     .nav-menu.active {
         left: 0;
+        pointer-events: auto !important;
+    }
+    
+    /* Ensure all menu items are clickable when menu is active */
+    .nav-menu.active li,
+    .nav-menu.active a {
+        pointer-events: auto !important;
+        z-index: 1001 !important;
+        position: relative;
     }
 
     .nav-toggle {
-        display: flex;
-        position: relative;
-        z-index: 1001;
+        display: flex !important;
+        position: relative !important;
+        z-index: 1003 !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
+        padding: 12px !important;
+        pointer-events: auto !important;
+        -webkit-appearance: none !important;
+        appearance: none !important;
+        margin: 0 !important;
+        outline: none !important;
+        background: rgba(30, 144, 255, 0.05) !important;
+        border-radius: 10px !important;
+        cursor: pointer !important;
+        touch-action: manipulation !important;
     }
 
-    /* Overlay when menu is open */
+    .nav-toggle:active {
+        background: rgba(30, 144, 255, 0.15) !important;
+        transform: scale(0.9) !important;
+    }
+    
+    .nav-toggle:focus {
+        outline: 2px solid rgba(30, 144, 255, 0.5) !important;
+        outline-offset: 2px !important;
+    }
+
+    .nav-toggle span {
+        width: 26px;
+        height: 3px;
+        pointer-events: none;
+    }
+
+    /* Overlay when menu is open - must be BELOW menu */
     .nav-menu.active::after {
         content: '';
         position: fixed;
@@ -1931,9 +2136,38 @@ p {
         width: 100vw;
         height: 100vh;
         background: rgba(0, 0, 0, 0.6);
-        z-index: -1;
+        z-index: 998 !important;
         animation: fadeIn 0.3s ease;
         pointer-events: auto;
+    }
+
+    /* Ensure nav-toggle is always above overlay - Final override */
+    .nav-toggle {
+        pointer-events: auto !important;
+        z-index: 1003 !important;
+        position: relative !important;
+        display: flex !important;
+        cursor: pointer !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    /* Prevent any child elements from blocking clicks */
+    .nav-toggle * {
+        pointer-events: none !important;
+    }
+    
+    /* Even when menu is active, button should be clickable */
+    .nav-wrapper .nav-toggle {
+        z-index: 1003 !important;
+        pointer-events: auto !important;
+    }
+    
+    /* Ensure button is always accessible */
+    #navToggle {
+        z-index: 1003 !important;
+        pointer-events: auto !important;
+        position: relative !important;
     }
 
     @keyframes fadeIn {
@@ -2393,6 +2627,66 @@ p {
     .nav-menu {
         width: 85%;
         padding: 4rem 1.5rem 2rem;
+    }
+
+    /* Mobile Button Fixes - Ensure all buttons are clickable */
+    .btn,
+    button,
+    a.btn,
+    input[type="submit"],
+    input[type="button"],
+    .btn-primary,
+    .btn-outline,
+    .btn-submit {
+        min-height: 48px;
+        min-width: 120px;
+        padding: 14px 24px;
+        font-size: 1rem;
+        z-index: 10;
+        position: relative;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: pointer;
+    }
+
+    .hero-prev,
+    .hero-next,
+    .testimonial-prev,
+    .testimonial-next {
+        min-width: 48px;
+        min-height: 48px;
+        padding: 12px;
+        z-index: 10;
+    }
+
+    .nav-toggle {
+        min-width: 50px !important;
+        min-height: 50px !important;
+        z-index: 1003 !important;
+        padding: 12px !important;
+        pointer-events: auto !important;
+        background: rgba(30, 144, 255, 0.05) !important;
+        border-radius: 10px !important;
+        display: flex !important;
+        position: relative !important;
+    }
+
+    .nav-toggle:active {
+        background: rgba(30, 144, 255, 0.15) !important;
+        transform: scale(0.9) !important;
+    }
+
+    .nav-toggle * {
+        pointer-events: none !important;
+    }
+
+    .dot,
+    .testimonial-dot {
+        min-width: 44px;
+        min-height: 44px;
+        z-index: 10;
     }
 }
 

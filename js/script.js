@@ -3,8 +3,19 @@ const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 
 if (navToggle && navMenu) {
-    navToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
+    // Ensure button is clickable - set highest priority
+    navToggle.style.pointerEvents = 'auto';
+    navToggle.style.zIndex = '1003';
+    navToggle.style.cursor = 'pointer';
+    navToggle.style.position = 'relative';
+    navToggle.setAttribute('tabindex', '0');
+    
+    // Use both click and touchstart for better mobile support
+    const toggleMenu = (e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
         
@@ -14,28 +25,76 @@ if (navToggle && navMenu) {
         } else {
             document.body.style.overflow = '';
         }
+    };
+    
+    // Add appropriate pointer/touch/click listener depending on browser capability
+    if (window.PointerEvent) {
+        // pointer events unify mouse/touch/pen
+        navToggle.addEventListener('pointerup', (e) => {
+            // only respond to primary button
+            if (e.pointerType === 'mouse' && e.button !== 0) return;
+            toggleMenu(e);
+        }, { passive: false });
+    } else {
+        // fallback: support click and touchend
+        navToggle.addEventListener('click', toggleMenu, { passive: false });
+        navToggle.addEventListener('touchend', toggleMenu, { passive: false });
+    }
+    
+    // Also handle keyboard for accessibility
+    navToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu(e);
+        }
     });
 
-    // Close menu when clicking on a link
+    // Close menu when clicking on a link - Enhanced for mobile
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        // Ensure links are clickable
+        link.style.pointerEvents = 'auto';
+        link.style.cursor = 'pointer';
+        link.style.zIndex = '1001';
+        
+        const closeMenu = (e) => {
+            // Allow the link to navigate
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
             document.body.style.overflow = '';
-        });
+        };
+        
+        // Support multiple event types for maximum compatibility
+        if (window.PointerEvent) {
+            link.addEventListener('pointerup', (e) => {
+                if (e.pointerType === 'mouse' && e.button !== 0) return;
+                closeMenu(e);
+            }, { passive: false });
+            // Also add click as fallback
+            link.addEventListener('click', closeMenu);
+        } else {
+            // Fallback for browsers without PointerEvent
+            link.addEventListener('click', closeMenu, { passive: false });
+            link.addEventListener('touchend', closeMenu, { passive: false });
+        }
     });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
+    // Close menu when clicking outside - Enhanced for mobile
+    const handleOutsideClick = (e) => {
         if (navMenu.classList.contains('active')) {
-            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+            const target = e.target;
+            // Don't close if clicking on menu, toggle button, or their children
+            if (!navMenu.contains(target) && !navToggle.contains(target)) {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
                 document.body.style.overflow = '';
             }
         }
-    });
+    };
+    
+    // Support both click and touch events
+    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener('touchend', handleOutsideClick);
 
     // Close menu on window resize if it's open
     window.addEventListener('resize', () => {
@@ -48,38 +107,39 @@ if (navToggle && navMenu) {
 }
 
 // Hero Slider
-let currentSlide = 0;
+let heroIndex = 0;
 const slides = document.querySelectorAll('.hero-slide');
 const dots = document.querySelectorAll('.dot');
 
 function showSlide(n) {
-    if (n >= slides.length) currentSlide = 0;
-    if (n < 0) currentSlide = slides.length - 1;
-    
+    if (slides.length === 0) return;
+    if (n >= slides.length) heroIndex = 0;
+    if (n < 0) heroIndex = slides.length - 1;
+
     slides.forEach(slide => slide.classList.remove('active'));
     dots.forEach(dot => dot.classList.remove('active'));
-    
-    slides[currentSlide].classList.add('active');
-    if (dots[currentSlide]) {
-        dots[currentSlide].classList.add('active');
+
+    slides[heroIndex].classList.add('active');
+    if (dots[heroIndex]) {
+        dots[heroIndex].classList.add('active');
     }
 }
 
 function changeSlide(n) {
-    currentSlide += n;
-    showSlide(currentSlide);
+    heroIndex += n;
+    showSlide(heroIndex);
 }
 
-function currentSlide(n) {
-    currentSlide = n - 1;
-    showSlide(currentSlide);
+function setHeroSlide(n) {
+    heroIndex = n - 1;
+    showSlide(heroIndex);
 }
 
 // Auto slide
 if (slides.length > 0) {
     setInterval(() => {
-        currentSlide++;
-        showSlide(currentSlide);
+        heroIndex++;
+        showSlide(heroIndex);
     }, 5000);
 }
 
@@ -115,7 +175,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Contact Form Handler
-const contactForm = document.querySelector('.contact-form form');
+// select any <form> element that has the class `contact-form` (works when form has the class directly)
+const contactForm = document.querySelector('form.contact-form') || document.querySelector('.contact-form form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
