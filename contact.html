@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Travello India</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.jpg" alt="Travello India Logo" class="logo-image">
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We're here to help you plan your perfect trip</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="contact-info-grid">
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p style="color: var(--text-light); margin-bottom: 0.8rem;">Reach us by phone anytime</p>
+                    <ul class="contact-list">
+                        <li>
+                            <a href="tel:+919555000011">+91 9555000011</a>
+                        </li>
+                        <li>
+                            <a href="tel:+917289911011">+91 7289911011</a>
+                        </li>
+                        <li>
+                            <a href="tel:+911147000111">011-47000111</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p style="color: var(--text-light); margin-bottom: 0.8rem;">Get a response within 24 hours</p>
+                    <ul class="contact-list">
+                        <li>
+                            <a href="mailto:info@travelloindia.com">info@travelloindia.com</a>
+                        </li>
+                        <li>
+                            <a href="mailto:support@travelloindia.com">support@travelloindia.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p style="color: var(--text-light); margin-bottom: 0.8rem;">Come visit our office</p>
+                    <p style="font-weight: 600; line-height: 1.8;">
+                        Travello India<br>
+                        <span style="color: var(--text-light);">New Delhi, 110005<br>India</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <div class="form-header">
+                    <h2>Send Us a Message</h2>
+                    <p>We'd love to hear from you. Drop us a message and we'll get back to you shortly.</p>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">
+                                <i class="fas fa-user"></i> Full Name *
+                            </label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i> Email Address *
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i> Phone Number *
+                            </label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">
+                                <i class="fas fa-tag"></i> Subject *
+                            </label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="package-inquiry">Package Inquiry</option>
+                                <option value="booking">Booking</option>
+                                <option value="custom-tour">Custom Tour</option>
+                                <option value="support">Customer Support</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">
+                            <i class="fas fa-comment-alt"></i> Message *
+                        </label>
+                        <textarea id="message" name="message" rows="6" placeholder="Tell us more about your query or requirements..." required></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="contact-additional-info">
+                <div class="contact-page-grid">
+                    <div class="business-hours-section">
+                        <div class="section-title">
+                            <i class="fas fa-clock"></i>
+                            <h2>Business Hours</h2>
+                        </div>
+                        <div class="hours-grid">
+                            <div class="hours-card">
+                                <div class="hours-icon">
+                                    <i class="fas fa-calendar-week"></i>
+                                </div>
+                                <h3>Monday - Friday</h3>
+                                <p>9:00 AM - 7:00 PM</p>
+                            </div>
+                            <div class="hours-card">
+                                <div class="hours-icon">
+                                    <i class="fas fa-calendar-day"></i>
+                                </div>
+                                <h3>Saturday</h3>
+                                <p>10:00 AM - 6:00 PM</p>
+                            </div>
+                            <div class="hours-card">
+                                <div class="hours-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <h3>Sunday</h3>
+                                <p>10:00 AM - 4:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-section">
+                        <div class="section-title">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h2>Find Us on Map</h2>
+                        </div>
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.036126314789!2d77.20902131508248!3d28.570182982444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce2a77db42c49%3A0x1e0e1e0e1e0e1e0e!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-newsletter">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Get exclusive travel deals, destination guides, and travel tips delivered to your inbox</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/logo.jpg" alt="Travello India Logo">
+                    </a>
+                    <p>Your trusted travel partner for unforgettable journeys across India and beyond. We make travel dreams come true with professional service and competitive prices.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="packages.html">Tour Packages</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="destinations.html">Andaman & Nicobar</a></li>
+                        <li><a href="destinations.html">Kerala</a></li>
+                        <li><a href="destinations.html">Goa</a></li>
+                        <li><a href="destinations.html">Rajasthan</a></li>
+                        <li><a href="destinations.html">Himachal Pradesh</a></li>
+                        <li><a href="destinations.html">North East</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +91 9555000011</li>
+                        <li><i class="fas fa-phone"></i> +91 7289911011</li>
+                        <li><i class="fas fa-envelope"></i> info@travelloindia.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> New Delhi, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-payment">
+                <h4>We Accept</h4>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fab fa-cc-paypal" title="PayPal"></i>
+                    <i class="fab fa-cc-amex" title="American Express"></i>
+                    <i class="fas fa-credit-card" title="Credit Card"></i>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="copyright-section">
+                        <p class="copyright-text">
+                            <i class="fas fa-copyright"></i> <strong>2024 Travello India</strong>. All Rights Reserved.
+                        </p>
+                        <p class="copyright-subtext">
+                            Your trusted travel partner for unforgettable journeys across India and beyond.
+                        </p>
+                    </div>
+                    <p class="developer-credit">
+                        <i class="fas fa-code"></i> Designed and Developed by 
+                        <a href="https://anrasolutions.com/" target="_blank" rel="noopener noreferrer">
+                            <strong>ANRA Solutions</strong>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
